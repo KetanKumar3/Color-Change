@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>click to change color</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-image: linear-gradient(to right, #78fa43, #be143e);
+        }
+
+        #target1 {
+            border: 2px solid black;
+            padding: 10px;
+            background-color: #78fa43
+        }
+
+        #target2 {
+            border: 2px solid black;
+            padding: 10px;
+            background-color: #be143e
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 40vh;
+        }
+
+        #bg {
+
+            font-size: 20px;
+            padding-top: 20px;
+        }
+
+        .text {
+            padding-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text">Click to Change BackGround Color </h1>
+        <button class="btn" id="target1">#78fa43</button>
+        <button class="btn" id="target2">#be143e</button>
+        <h1 id="bg">background-image: linear-gradient(to right,#78fa43, #be143e);</h1>
+    </div>
+</body>
+<script>
+    let target1ele = document.getElementById("target1");
+    let target2ele = document.getElementById("target2");
+    var hash1 = "#78fa43", hash2 = "#be143e";
+
+    const find = () => {
+        let number = "123456789abcdef";
+        let hash = '#';
+        for (let i = 0; i < 6; i++) {
+            hash = hash + number[Math.floor(Math.random() * 10)]
+        }
+        return hash
+    }
+
+    target1ele.addEventListener('click', () => {
+        hash1 = find()
+        console.log(hash1)
+        document.body.style.backgroundImage = `linear-gradient(to right,${hash1},${hash2})`
+        document.getElementById('target1').innerText = hash1
+        document.getElementById('target1').style.backgroundColor = hash1;
+        document.getElementById('bg').innerText = `background-image: linear-gradient(to right,${hash1},${hash2})`;
+    })
+
+    target2ele.addEventListener('click', () => {
+        hash2 = find()
+        console.log(hash2)
+        document.body.style.backgroundImage = `linear-gradient(to right,${hash1},${hash2})`
+        document.getElementById('target2').innerText = hash2
+        document.getElementById('target2').style.backgroundColor = hash2;
+        document.getElementById('bg').innerText = `background-image: linear-gradient(to right,${hash1},${hash2})`;
+    })
+</script>
+
+</html>
